@@ -1,5 +1,7 @@
 # JWT Peek
 
+**[Open the demo →](https://antonidashaci.github.io/jwt-peek/)**
+
 Decode a JWT, check the claims that decide whether it would actually be
 accepted, and verify an HS256 signature — **offline, in one tab**.
 
