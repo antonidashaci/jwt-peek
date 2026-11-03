@@ -1,0 +1,15 @@
+{
+  "name": "jwt-peek",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Decode and check a JWT offline, with HMAC signature verification. No server, no storage.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "start": "python -m http.server 8000"
+  },
+  "keywords": ["jwt", "jws", "token", "decode", "verify", "hs256", "offline", "vanilla-js"],
+  "author": "antonidashaci",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/antonidashaci/jwt-peek.git" }
+}

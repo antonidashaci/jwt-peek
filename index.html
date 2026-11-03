@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JWT Peek</title>
+<meta name="description" content="Decode and check a JWT offline. The token never leaves your browser.">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='13'>&#128273;</text></svg>">
+</head>
+<body>
+<header>
+  <h1>JWT Peek</h1>
+  <p>
+    Decode a token, check the claims that decide whether it would be accepted,
+    and verify an HS256 signature — all in this tab.
+    <strong>Nothing is sent anywhere.</strong>
+  </p>
+</header>
+
+<main>
+  <section aria-labelledby="token-heading">
+    <h2 id="token-heading">Token</h2>
+    <label class="sr-only" for="token">Paste a JWT</label>
+    <textarea id="token" rows="5" spellcheck="false" autocomplete="off"
+      placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0MiJ9.&hellip;"></textarea>
+    <div class="actions">
+      <button id="sample" type="button" class="ghost">Load a sample</button>
+      <button id="clear" type="button" class="ghost">Clear</button>
+      <span id="parse-error" class="error" role="alert"></span>
+    </div>
+  </section>
+
+  <section id="findings-section" aria-labelledby="findings-heading" hidden>
+    <h2 id="findings-heading">Checks</h2>
+    <div class="row">
+      <label>Expected audience <code>aud</code>
+        <input id="audience" placeholder="(skip)" autocomplete="off">
+      </label>
+      <label>Expected issuer <code>iss</code>
+        <input id="issuer" placeholder="(skip)" autocomplete="off">
+      </label>
+      <label>Clock leeway (s)
+        <input id="leeway" type="number" min="0" max="3600" value="0">
+      </label>
+    </div>
+    <ul id="findings" class="findings"></ul>
+  </section>
+
+  <section id="verify-section" aria-labelledby="verify-heading" hidden>
+    <h2 id="verify-heading">Verify signature</h2>
+    <p class="muted">
+      HMAC only. The algorithm below is what <em>you</em> expect — it is never
+      read from the token, because trusting the header is how algorithm
+      confusion works.
+    </p>
+    <div class="row">
+      <label>Secret
+        <input id="secret" type="password" autocomplete="off" placeholder="shared secret">
+      </label>
+      <label>Algorithm
+        <select id="alg">
+          <option>HS256</option><option>HS384</option><option>HS512</option>
+        </select>
+      </label>
+      <label>&nbsp;
+        <button id="verify" type="button">Verify</button>
+      </label>
+    </div>
+    <p id="verify-result" role="status" aria-live="polite"></p>
+  </section>
+
+  <section id="decoded-section" aria-labelledby="decoded-heading" hidden>
+    <h2 id="decoded-heading">Decoded</h2>
+    <h3>Header</h3>
+    <pre id="header"></pre>
+    <h3>Payload</h3>
+    <pre id="payload"></pre>
+    <h3>Timestamps</h3>
+    <table id="times">
+      <thead><tr><th scope="col">Claim</th><th scope="col">Local time</th><th scope="col">When</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <p id="no-times" class="muted">No NumericDate claims in this token.</p>
+  </section>
+</main>
+
+<footer>
+  <p>
+    Offline by design: pasting a live credential into a website hands someone a
+    working key. <a href="https://github.com/antonidashaci/jwt-peek">Source</a>.
+  </p>
+</footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
