@@ -32,8 +32,8 @@ const el = {
 /** The sample is signed with the secret "secret" so Verify has something to do. */
 const SAMPLE = [
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
-  'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFkYSBMb3ZlbGFjZSIsImlhdCI6MTc2MjAwMDAwMCwiZXhwIjoxNzkzNTM2MDAwLCJpc3MiOiJodHRwczovL2F1dGguZXhhbXBsZS5jb20iLCJhdWQiOiJhcGkifQ',
-  'J05u4q6xFS0Z-G3HNqyHvqhSAxLwIKzUzJXQ63kVaxM',
+  'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFkYSBMb3ZlbGFjZSIsImlhdCI6MTc5MzUwMDAwMCwiZXhwIjoxOTAwMDAwMDAwLCJpc3MiOiJodHRwczovL2F1dGguZXhhbXBsZS5jb20iLCJhdWQiOiJhcGkifQ',
+  'yzxlFKuLX8oPPlG1iQpYl0HvAR5E0aD-H1L1VVCdD8A',
 ].join('.');
 
 function render() {
